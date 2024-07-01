@@ -1,0 +1,519 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Roziyam SHOP {% endblock title %}
+
+
+
+{% block home_page %}
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>Roziyam shop</h4>
+                                <span>Превосходный, чистый и креативный</span>
+                                <div class="main-border-button">
+                                    <a href="#">Купить сейчас!</a>
+                                </div>
+                            </div>
+                            <img src="{% static 'images/left-banner-image.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Женщины</h4>
+                                            <span>Лучшая одежда для женщин</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Женщины</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit
+                                                    incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Узнать больше</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static 'images/baner-right-image-01.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Мужчины</h4>
+                                            <span>Лучшая одежда для мужчин</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Мужчины</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit
+                                                    incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Узнать больше</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static 'images/baner-right-image-02.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Дети</h4>
+                                            <span>Лучшая одежда для детей</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Дети</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit
+                                                    incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Узнать больше</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static 'images/baner-right-image-03.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Аксессуары</h4>
+                                            <span>Лучшие трендовые аксессуары</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Аксессуары</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit
+                                                    incid.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Узнать больше</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static 'images/baner-right-image-04.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="men">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Новинки для мужчин</h2>
+                        <span>Подробности к деталям - вот что делает Roziyam отличным от других тем.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="men-item-carousel">
+                        <div class="owl-men-item owl-carousel">
+                            {% for product in man_products %}
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{% url 'product_detail' product.id %}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li>
+                                                    <form action="{% url 'cart_add' product.id %}" method="post"
+                                                          style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="quantity" value="1">
+                                                        <input type="hidden" name="update" value="False">
+                                                        <button type="submit" class="btn btn-link p-0 shopping-cart-btn"
+                                                                style="color: inherit;">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>{{ product.price }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Men Area Ends ***** -->
+
+
+    <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Новинки для женщин</h2>
+                        <span>Подробности к деталям - вот что делает Roziyam отличным от других тем.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="women-item-carousel">
+                        <div class="owl-women-item owl-carousel">
+                            {% for product in woman_products %}
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{% url 'product_detail' product.id %}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li>
+                                                    <form action="{% url 'cart_add' product.id %}" method="post"
+                                                          style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="quantity" value="1">
+                                                        <input type="hidden" name="update" value="False">
+                                                        <button type="submit" class="btn btn-link p-0 shopping-cart-btn"
+                                                                style="color: inherit;">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>{{ product.price }}</span>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Women Area Ends ***** -->
+
+    <!-- ***** Kids Area Starts ***** -->
+    <section class="section" id="kids">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Новинки для детей</h2>
+                        <span>Подробности к деталям - вот что делает Roziyam отличным от других тем.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kid-item-carousel">
+                        <div class="owl-kid-item owl-carousel">
+                            {% for product in kids_products %}
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{% url 'product_detail' product.id %}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li>
+                                                    <form action="{% url 'cart_add' product.id %}" method="post"
+                                                          style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="quantity" value="1">
+                                                        <input type="hidden" name="update" value="False">
+                                                        <button type="submit" class="btn btn-link p-0 shopping-cart-btn"
+                                                                style="color: inherit;">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="" style="border-radius: 35px 105px">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>{{ product.price }}</span>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Kids Area Ends ***** -->
+
+    <!-- ***** Accessory Area Starts ***** -->
+    <section class="section" id="kids">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Аксессуары</h2>
+                        <span>Подробности к деталям - вот что делает Roziyam отличным от других тем.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kid-item-carousel">
+                        <div class="owl-kid-item owl-carousel">
+                            {% for product in accessory_products %}
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{% url 'product_detail' product.id %}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li>
+                                                    <form action="{% url 'cart_add' product.id %}" method="post"
+                                                          style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="quantity" value="1">
+                                                        <input type="hidden" name="update" value="False">
+                                                        <button type="submit" class="btn btn-link p-0 shopping-cart-btn"
+                                                                style="color: inherit;">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>{{ product.price }}</span>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Accessory Area Ends ***** -->
+
+
+    {#    <!-- ***** Explore Area Starts ***** -->#}
+    {#    <section class="section" id="explore">#}
+    {#        <div class="container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-lg-6">#}
+    {#                    <div class="left-content">#}
+    {#                        <h2>Исследуйте наши продукты</h2>#}
+    {#                        <span>Вы можете использовать этот HTML CSS шаблон Roziyam. Вы вольны изменять или редактировать этот макет. Вы можете превратить этот шаблон в любую тему CMS электронной коммерции, как вам угодно.</span>#}
+    {#                        <div class="quote">#}
+    {#                            <i class="fa fa-quote-left"></i>#}
+    {#                            <p>Вы не имеете права распространять этот ZIP файл шаблона на любом другом веб-сайте.</p>#}
+    {#                        </div>#}
+    {#                        <p>В этот шаблон Roziyam входит 5 страниц, и мы предоставляем его вам абсолютно бесплатно на#}
+    {#                            нашем#}
+    {#                            сайте TemplateMo. Для нас есть затраты на веб-разработку.</p>#}
+    {#                        <p>Если этот шаблон полезен для вашего веб-сайта или бизнеса, пожалуйста, поддержите нас немного#}
+    {#                            через PayPal. Также расскажите своим друзьям о нашем отличном веб-сайте. Спасибо.</p>#}
+    {#                        <div class="main-border-button">#}
+    {#                            <a href="products.html">Узнать больше</a>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="col-lg-6">#}
+    {#                    <div class="right-content">#}
+    {#                        <div class="row">#}
+    {#                            <div class="col-lg-6">#}
+    {#                                <div class="leather">#}
+    {#                                    <h4>Кожаные сумки</h4>#}
+    {#                                    <span>Последняя коллекция</span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div class="col-lg-6">#}
+    {#                                <div class="first-image">#}
+    {#                                    <img src="{% static 'images/explore-image-01.jpg' %}" alt="">#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div class="col-lg-6">#}
+    {#                                <div class="second-image">#}
+    {#                                    <img src="{% static 'images/explore-image-02.jpg' %}" alt="">#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div class="col-lg-6">#}
+    {#                                <div class="types">#}
+    {#                                    <h4>Разные типы</h4>#}
+    {#                                    <span>Более 304 продуктов</span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+    {#    <!-- ***** Explore Area Ends ***** -->#}
+
+
+    <!-- ***** Social Area Starts ***** -->
+    <section class="section" id="social">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Социальные сети</h2>
+                        <span>Подробности к деталям - вот что делает Roziyam отличным от других тем.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row images">
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="https://instagram.com">
+                                <h6>Fashion</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-01.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>New</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-02.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Brand</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-03.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Makeup</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-04.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Leather</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-05.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Bag</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{% static 'images/instagram-06.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Social Area Ends ***** -->
+
+    <!-- ***** Subscribe Area Starts ***** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Местоположение магазина:<br><span>Санни Айлз Бич, FL 33160, Соединенные Штаты</span>
+                                </li>
+                                <li>Телефон:<br><span>+998 91 775-31-32</span></li>
+                                <li>Офис нахождения:<br><span>Северный Майами Бич</span></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Рабочее время:<br><span>07:30 - 21:30 ежедневно</span></li>
+                                <li>Email:<br><span>murodxon@company.com</span></li>
+                                <li>Социальные сети:<br><span><a href="https://www.facebook.com">Facebook</a>, <a
+                                        href="https://www.instagram.com/reel/C8vtgHcIAe_/?igsh=MTlxMWdqMGdqenR1ZA==">Instagram</a>, <a
+                                        href="https://t.me/ROZIYAM_SHOP">Telegram</a></span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Subscribe Area Ends ***** -->
+{% endblock home_page %}
