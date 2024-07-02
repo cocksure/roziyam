@@ -9,6 +9,10 @@ from shop.models import Product, Category
 import requests
 
 
+def about_view(request):
+	return render(request, 'about.html')
+
+
 class HomePageView(ListView):
 	model = Product
 	context_object_name = 'product'
@@ -81,11 +85,9 @@ def order_confirm(request):
 
 		cart.clear()
 
-		# Дополнительный код для отправки SMS, если требуется
-
 		return redirect('cart_detail')
 	else:
-		return redirect('cart_detail')  # Если запрос не POST, перенаправляем на страницу корзины
+		return redirect('cart_detail')
 
 
 def send_telegram_message(message):
